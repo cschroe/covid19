@@ -7,11 +7,11 @@ version 15
 set scheme plotplain
 
 * Define directories as globals
-global do = "/Users/Chris/Desktop/covid19_alberta/do"
+global do = "/Users/Chris/Desktop/covid19/do"
 
-global input = "/Users/Chris/Desktop/covid19_alberta/input"
+global input = "/Users/Chris/Desktop/covid19/input"
 
-global output = "/Users/Chris/Desktop/covid19_alberta/output"
+global output = "/Users/Chris/Desktop/covid19/output"
 
-global temp = "/Users/Chris/Desktop/covid19_alberta/temp"
+global temp = "/Users/Chris/Desktop/covid19/temp"
 

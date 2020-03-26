@@ -15,7 +15,7 @@ global xstart = td($startdate)
 global xend = td($today)
 
 * Environment
-run "/Users/Chris/Desktop/covid19_alberta/do/environment.do"
+run "/Users/Chris/Desktop/covid19/do/environment.do"
 
 global abpop = 4413146 // Q1 2020 - Table 17-10-0009-01, Statistics Canada
 global ab100k = $abpop / 100000
