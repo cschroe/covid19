@@ -29,7 +29,7 @@ This file contains figures, tables, etc.
  * March 23: Less emphasis on testing returning travelers, more on symptomatic individuals and healthcare workers
  * March 25: Enforcement of mandatory public health orders
  
-## Measures implemented at the national level
+### Measures implemented at the national level
 
 ### Capacity
 * 527-597 adult ventilators, 78 pediatric ventilators
