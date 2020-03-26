@@ -36,10 +36,10 @@ sigma = 1/5.2 # Incubation rate (1/avg. incubation period in days)
 gamma = 1/3 # Recovery rate (1/infectious period in days)
 mu = 0 # Birth rate/death rate
 
+paramsAB = [N,beta,sigma,gamma,mu]
+
 # Assumed basic reproductive number
 brnr = (sigma/(mu+sigma))*(beta/(mu+gamma))
-
-paramsAB = [N,beta,sigma,gamma,mu]
 
 # Define ad-hoc parameters
 hr = 0.14 # Case hospitalization rate
