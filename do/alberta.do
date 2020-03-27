@@ -65,9 +65,9 @@ xline($mass2502w) text(80 $mass2502w "< 250 + 2 weeks", place(w) orientation(hor
 //saving("${output}/new_cases_ab.gph", replace)
 graph export "${output}/new_cases_ab.pdf", as(pdf) replace
 
-* Cummulative cases
+* Cumulative cases
 twoway connected cumu_cases_total date if new_cases_total != ., ///
-ytitle("Total Cummulative Cases") xtitle("Date reported to AHS") ///
+ytitle("Total Cumulative Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($schools2w) text(150 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
@@ -76,11 +76,11 @@ xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(ho
 //saving("${output}/cumu_cases_ab.gph", replace)
 graph export "${output}/cumulative_cases_ab.pdf", as(pdf) replace
 
-* Cummulative cases by source of infection
+* Cumulative cases by source of infection
 twoway (connected cumu_cases_travel date if new_cases_total != .) ///
 (connected cumu_cases_closecont date if new_cases_total != .) ///
 (connected cumu_cases_comm date if new_cases_total != .), ///
-ytitle("Cummulative Cases") xtitle("Date reported to AHS") ///
+ytitle("Cumulative Cases") xtitle("Date reported to AHS") ///
 legend(label(1 "Travel") label(2 "Close Contact of Traveler") label(3 "Community Transmission") pos(6) row(1)) ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(50 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
@@ -119,9 +119,9 @@ xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //saving("${output}/current_hospital_ab.gph", replace)
 graph export "${output}/current_hospitalizations_ab.pdf", as(pdf) replace
 
-* Cummulative hopsitalizations
+* Cumulative hopsitalizations
 twoway connected cumu_hospital date if new_cases_total != ., ///
-ytitle("Cummulative Hospitalizations") xtitle("Date") ///
+ytitle("Cumulative Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
@@ -156,9 +156,9 @@ xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //saving("${output}/current_icu_ab.gph", replace)
 graph export "${output}/current_icu_ab.pdf", as(pdf) replace
 
-* Cummulative ICU admissions
+* Cumulative ICU admissions
 twoway connected cumu_icu date if new_cases_total != ., ///
-ytitle("Cummulative ICU Admissions") xtitle("Date") ///
+ytitle("Cumulative ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
