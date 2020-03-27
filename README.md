@@ -1,18 +1,18 @@
 # Covid-19 Data and Analysis
-This repository contains raw data and light analyses on the Covid-19 pandemic.
+This repository contains raw data and simple analyses surrounding the Covid-19 pandemic with a focus on Alberta.
 
 ## Disclaimer
-The contents of this repository have been assembled by a non epidemiologist.  The data have been largely hand collected from media releases and reports published by public health authorities; discrepancies in reporting practices and quality certainly exist.
+The contents of this repository have been assembled by non epidemiologists.  The data have been largely hand collected from media releases and reports published by public health authorities; discrepancies in reporting practices and quality across jurisdictions certainly exist.
 
 ## Contents
 ### input
-This file contains raw data files.  Sources are indicated in the files.
+This folder contains the raw data files.  Sources are indicated in the files.
 
 ### do
-This file contains programs.
+This folder contains programs.
 
 ### output
-This file contains figures, tables, etc.
+This folder contains figures, tables, etc.
 
 ## Covid-19 in Alberta
 ### Measures implemented at the provincial level
@@ -35,4 +35,3 @@ This file contains figures, tables, etc.
 * 527-597 adult ventilators, 78 pediatric ventilators
 * 207 ICU beds; 704 including beds in special wards
 * Source: https://edmonton.ctvnews.ca/how-many-ventilators-and-icu-beds-does-alberta-have-1.4859181
-
