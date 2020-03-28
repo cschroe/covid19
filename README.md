@@ -18,7 +18,7 @@ This folder contains figures, tables, etc.
 ### Measures implemented at the provincial level
 * March 12: 
   1. Limit on mass gatherings of 250 people
-  2. Recommendation to self-isolate for 14 days for travelers returning from overseas
+  2. Recommendation to self-isolate for 14 days for travellers returning from overseas
 * March 15: Schools closed
 * March 17: 
   1. State of public health emergency
@@ -28,8 +28,17 @@ This folder contains figures, tables, etc.
  * March 20: Further restrictions on visits to long-term care facilities
  * March 23: Less emphasis on testing returning travelers, more on symptomatic individuals and healthcare workers
  * March 25: Enforcement of mandatory public health orders
+ * March 27:
+  1. Limit on mass gatherings of 15 people
+  2. Closure of provincial parks
+  3. Closure of non-essential close contact personal services
+  4. Prohibition of dine-in services
  
 ### Measures implemented at the national level
+* March 14: Recommendation to self-isolate for 14 days for travellers returning from overseas
+* March 16: Restricted border access to Canadian citizens, their families, permanent residents, and US citizens
+* March 20: Restriction on all non-essential travel between Canada and the US (announced March 18)
+* March 25: Quarantine act invoked; mandatory self-isolation for 14 days for travellers returning from outside the country
 
 ### Capacity
 * 527-597 adult ventilators, 78 pediatric ventilators
