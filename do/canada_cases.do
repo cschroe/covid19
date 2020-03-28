@@ -175,7 +175,7 @@ twoway (connected cumu_cases_100k day_50 if province == "Alberta", lcolor(blue))
 (connected cumu_cases_100k day_50 if province == "Quebec", lcolor(purple)) ///
 (connected cumu_cases_100k day_50 if province == "Saskatchewan", lcolor(green)) ///
 (connected cumu_cases_100k day_50 if province == "Yukon"), ///
-ytitle("Cumulative Cases per 100,000") xtitle("Days since 50th case") ///
+ytitle("Cumulative cases per 100,000") xtitle("Days since 50th case") ///
 legend(label(1 "AB") label(2 "BC") label(3 "MB") label(4 "NL") label(5 "NWT") label(6 "NB") label(7 "NS") label(8 "ONT") label(9 "PEI") label(10 "PQ") label(11 "SASK") label(12 "YU") pos(6) row(3))
 graph export "${output}/can_provinces.pdf", as(pdf) replace
 
