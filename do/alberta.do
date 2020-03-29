@@ -58,7 +58,7 @@ xline($mass2502w) text(80 $mass2502w "< 250 + 2 weeks", place(w) orientation(hor
 //xline($mass502w) text(100 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(110 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_cases_ab.gph", replace)
-graph export "${output}/new_cases_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/new_cases_ab.pdf", as(pdf) replace
 
 * Cumulative cases
 twoway connected cumu_cases_total date if new_cases_total != ., ///
@@ -69,7 +69,7 @@ xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(ho
 //xline($mass502w) text(200 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(250 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_ab.gph", replace)
-graph export "${output}/cumulative_cases_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/cumulative_cases_ab.pdf", as(pdf) replace
 
 * Cumulative cases by source of infection
 twoway (connected cumu_cases_travel date if new_cases_total != .) ///
@@ -83,7 +83,7 @@ xline($mass2502w) text(50 $mass2502w "< 250 + 2 weeks", place(w) orientation(hor
 //xline($mass502w) text(150 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(200 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_source_ab.gph", replace)
-graph export "${output}/cumulative_cases_source_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/cumulative_cases_source_ab.pdf", as(pdf) replace
 
 * ------------------------------------------------------------------------------
 * Estimate exponential growth rate
@@ -115,7 +115,7 @@ twoway (connected cumu_cases_total date if new_cases_total != .) ///
 ytitle("Total Cumulative Cases") xtitle("Date reported to AHS") ///
 legend(label(1 "Data") label(2 "Exponential growth") pos(6) row(1)) ///
 note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
-graph export "${output}/cumulative_cases_exp_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/cumulative_cases_exp_ab.pdf", as(pdf) replace
 
 
 * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -134,7 +134,7 @@ xline($mass2502w) text(8 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(10 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(11 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_hospital_ab.gph", replace)
-graph export "${output}/new_hospitalizations_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/new_hospitalizations_ab.pdf", as(pdf) replace
 
 * Hospital beds occupied
 twoway connected current_hospital date if new_hospital != ., ///
@@ -145,7 +145,7 @@ xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_hospital_ab.gph", replace)
-graph export "${output}/current_hospitalizations_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/current_hospitalizations_ab.pdf", as(pdf) replace
 
 * Cumulative hopsitalizations
 twoway connected cumu_hospital date if new_hospital != ., ///
@@ -156,7 +156,7 @@ xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_hospital_ab.gph", replace)
-graph export "${output}/cumulative_hospitalizations_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/cumulative_hospitalizations_ab.pdf", as(pdf) replace
 
 * ------------------------------------------------------------------------------
 * Estimate exponential growth rate
@@ -186,7 +186,7 @@ twoway (connected current_hospital date if new_hospital != .) ///
 ytitle("Hospital beds occupied") xtitle("Date") ///
 legend(label(1 "Data") label(2 "Exponential growth") pos(6) row(1)) ///
 note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
-graph export "${output}/current_hospitalizations_exp_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/current_hospitalizations_exp_ab.pdf", as(pdf) replace
 
 
 * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -205,7 +205,7 @@ xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(4 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(5 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_icu_ab.gph", replace)
-graph export "${output}/new_icu_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/new_icu_ab.pdf", as(pdf) replace
 
 * ICU beds occupied
 twoway connected current_icu date if new_icu != ., ///
@@ -216,7 +216,7 @@ xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_icu_ab.gph", replace)
-graph export "${output}/current_icu_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/current_icu_ab.pdf", as(pdf) replace
 
 * Cumulative ICU admissions
 twoway connected cumu_icu date if new_icu != ., ///
@@ -227,7 +227,7 @@ xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(hori
 //xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_icu_ab.gph", replace)
-graph export "${output}/cumulative_icu_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/cumulative_icu_ab.pdf", as(pdf) replace
 
 * ------------------------------------------------------------------------------
 * Estimate exponential growth rate
@@ -257,7 +257,7 @@ twoway (connected current_icu date if new_icu != .) ///
 ytitle("ICU beds occupied") xtitle("Date") ///
 legend(label(1 "Data") label(2 "Exponential growth") pos(6) row(1)) ///
 note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
-graph export "${output}/current_icu_exp_ab.pdf", as(pdf) replace
+graph export "${output}/alberta/current_icu_exp_ab.pdf", as(pdf) replace
 
 
 
