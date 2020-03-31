@@ -4,7 +4,7 @@
 * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 * Import and Prepare Data
 * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-import excel "${input}/COVID-19-geographic-disbtribution-worldwide-2020-03-29.xlsx", firstrow
+import excel "${input}/COVID-19-geographic-disbtribution-worldwide-2020-03-30.xlsx", firstrow
 drop day month year geoId
 rename countriesAndTerritories country
 rename countryterritoryCode country_code

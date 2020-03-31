@@ -54,7 +54,7 @@ twoway bar new_cases_total date if new_cases_total != ., ///
 ytitle("New Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(80 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(90 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(90 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(100 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(110 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_cases_ab.gph", replace)
@@ -65,7 +65,7 @@ twoway connected cumu_cases_total date if new_cases_total != ., ///
 ytitle("Total Cumulative Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(150 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(150 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(200 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(250 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_ab.gph", replace)
@@ -79,7 +79,7 @@ ytitle("Cumulative Cases") xtitle("Date reported to AHS") ///
 legend(label(1 "Travel") label(2 "Close Contact of Traveller") label(3 "Community Transmission") pos(6) row(1)) ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(50 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(100 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(100 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(150 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(200 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_source_ab.gph", replace)
@@ -130,7 +130,7 @@ twoway bar new_hospital date if new_hospital != ., ///
 ytitle("New Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(8 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(9 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(9 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(10 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(11 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_hospital_ab.gph", replace)
@@ -141,7 +141,7 @@ twoway connected current_hospital date if new_hospital != ., ///
 ytitle("Hospital Beds Occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_hospital_ab.gph", replace)
@@ -152,7 +152,7 @@ twoway connected cumu_hospital date if new_hospital != ., ///
 ytitle("Cumulative Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_hospital_ab.gph", replace)
@@ -201,7 +201,7 @@ twoway bar new_icu date if new_icu != ., ///
 ytitle("New ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(3 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(3 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(4 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(5 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_icu_ab.gph", replace)
@@ -212,7 +212,7 @@ twoway connected current_icu date if new_icu != ., ///
 ytitle("ICU beds occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_icu_ab.gph", replace)
@@ -223,7 +223,7 @@ twoway connected cumu_icu date if new_icu != ., ///
 ytitle("Cumulative ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_icu_ab.gph", replace)
