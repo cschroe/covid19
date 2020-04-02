@@ -55,7 +55,7 @@ ytitle("New Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(80 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(90 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(100 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(100 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(110 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_cases_ab.gph", replace)
 graph export "${output}/alberta/new_cases_ab.pdf", as(pdf) replace
@@ -66,7 +66,7 @@ ytitle("Total Cumulative Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(150 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(200 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(200 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(250 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_ab.gph", replace)
 graph export "${output}/alberta/cumulative_cases_ab.pdf", as(pdf) replace
@@ -80,7 +80,7 @@ legend(label(1 "Travel") label(2 "Close Contact of Traveller") label(3 "Communit
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(50 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(100 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(150 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(150 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(200 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_source_ab.gph", replace)
 graph export "${output}/alberta/cumulative_cases_source_ab.pdf", as(pdf) replace
@@ -131,7 +131,7 @@ ytitle("New Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(8 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(9 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(10 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(10 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(11 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_hospital_ab.gph", replace)
 graph export "${output}/alberta/new_hospitalizations_ab.pdf", as(pdf) replace
@@ -142,7 +142,7 @@ ytitle("Hospital Beds Occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_hospital_ab.gph", replace)
 graph export "${output}/alberta/current_hospitalizations_ab.pdf", as(pdf) replace
@@ -153,7 +153,7 @@ ytitle("Cumulative Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_hospital_ab.gph", replace)
 graph export "${output}/alberta/cumulative_hospitalizations_ab.pdf", as(pdf) replace
@@ -202,7 +202,7 @@ ytitle("New ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(3 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(4 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(4 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(5 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_icu_ab.gph", replace)
 graph export "${output}/alberta/new_icu_ab.pdf", as(pdf) replace
@@ -213,7 +213,7 @@ ytitle("ICU beds occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_icu_ab.gph", replace)
 graph export "${output}/alberta/current_icu_ab.pdf", as(pdf) replace
@@ -224,7 +224,7 @@ ytitle("Cumulative ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
 xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_icu_ab.gph", replace)
 graph export "${output}/alberta/cumulative_icu_ab.pdf", as(pdf) replace
