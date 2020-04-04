@@ -35,7 +35,7 @@ def SEIRModel(d_grid,init,params):
     
 # Define SEIR model parameters
 N = 4413146 # Population 
-beta = 0.15 # Infectious rate (probability of transmission per contact)
+beta = 0.1 # Infectious rate (probability of transmission per contact)
 sigma = 1/5.2 # Incubation rate (1/avg. incubation period in days)
 gamma = 1/18 # Recovery rate (1/avg. duration of illness in days)
 mr = 0.01 # Mortality rate

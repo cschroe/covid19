@@ -28,7 +28,7 @@ use "${temp}/ecdc_temp.dta", clear
 * ------------------------------------------------------------------------------
 * Canada vs. ____
 * ------------------------------------------------------------------------------
-global country = "DEU"
+global country = "FRA"
 
 * Cumulative cases
 twoway (connected cumu_cases_100k day_100 if country_code == "CAN", lcolor(red)) ///
