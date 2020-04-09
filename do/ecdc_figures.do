@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "21mar2020"
+global today = "9apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
@@ -28,7 +28,7 @@ use "${temp}/ecdc_temp.dta", clear
 * ------------------------------------------------------------------------------
 * Canada vs. ____
 * ------------------------------------------------------------------------------
-global country = "FRA"
+global country = "GBR"
 
 * Cumulative cases
 twoway (connected cumu_cases_100k day_100 if country_code == "CAN", lcolor(red)) ///

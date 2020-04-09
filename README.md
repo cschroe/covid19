@@ -41,6 +41,7 @@ This folder contains figures, tables, etc.
 * March 25: Quarantine act invoked; mandatory self-isolation for 14 days for travellers returning from outside the country
 
 ### Capacity
-* 527-597 adult ventilators, 78 pediatric ventilators
-* 207 ICU beds; 704 including beds in special wards
-* Source: https://edmonton.ctvnews.ca/how-many-ventilators-and-icu-beds-does-alberta-have-1.4859181
+* 509 ventilators
+* 295 ICU beds
+* 8,483 hospital beds
+* Source: AHS (covid-19-case-modelling-projection.pdf)

@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "27mar2020"
+global today = "9apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
@@ -31,9 +31,6 @@ global schools = td("15mar2020") // Closure of schools, March 15
 global mass50 = td("17mar2020") // Limit on mass gatherings of 50 people, March 17
 global enforce = td("25mar2020") // Enforcement of mandatory public health orders, March 25
 
-* Measures implemented in Canada
-
-
 foreach date in mass250 schools mass50 enforce {
 	global `date'2w = $`date' + 14
 }
@@ -53,10 +50,10 @@ import excel "${input}/raw_data_ab.xlsx", sheet("cases") firstrow
 twoway bar new_cases_total date if new_cases_total != ., ///
 ytitle("New Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(80 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(90 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(100 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(110 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(80 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(90 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(100 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(110 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_cases_ab.gph", replace)
 graph export "${output}/alberta/new_cases_ab.pdf", as(pdf) replace
 
@@ -64,24 +61,24 @@ graph export "${output}/alberta/new_cases_ab.pdf", as(pdf) replace
 twoway connected cumu_cases_total date if new_cases_total != ., ///
 ytitle("Total Cumulative Cases") xtitle("Date reported to AHS") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(100 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(150 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(200 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(250 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(100 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(150 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(200 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(250 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_ab.gph", replace)
 graph export "${output}/alberta/cumulative_cases_ab.pdf", as(pdf) replace
 
 * Cumulative cases by source of infection
 twoway (connected cumu_cases_travel date if new_cases_total != .) ///
-(connected cumu_cases_closecont date if new_cases_total != .) ///
+(connected cumu_cases_known date if new_cases_total != .) ///
 (connected cumu_cases_comm date if new_cases_total != .), ///
 ytitle("Cumulative Cases") xtitle("Date reported to AHS") ///
-legend(label(1 "Travel") label(2 "Close Contact of Traveller") label(3 "Community Transmission") pos(6) row(1)) ///
+legend(label(1 "Travel") label(2 "Known Source") label(3 "Community Transmission") pos(6) row(1)) ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(50 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(100 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(150 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(200 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(50 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(100 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(150 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(200 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_cases_source_ab.gph", replace)
 graph export "${output}/alberta/cumulative_cases_source_ab.pdf", as(pdf) replace
 
@@ -117,6 +114,24 @@ legend(label(1 "Data") label(2 "Exponential growth") pos(6) row(1)) ///
 note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
 graph export "${output}/alberta/cumulative_cases_exp_ab.pdf", as(pdf) replace
 
+* ------------------------------------------------------------------------------
+* Doubling
+* ------------------------------------------------------------------------------
+* Doubling rate for each cumulative total
+foreach var of varlist cumu_cases_total {
+	cap drop gr_`var'
+	gen gr_`var' = ((`var' - `var'[_n-5])/`var'[_n-5])*100
+	cap drop dd_`var'
+	gen dd_`var' = (70/gr_`var')*5
+}
+
+* Doubling days of total cumulative cases
+twoway connected dd_cumu_cases_total date if new_cases_total != ., ///
+ytitle("Doubling time in days") xtitle("Date reported to AHS")
+graph export "${output}/alberta/cumulative_cases_dd_ab.pdf", as(pdf) replace
+
+
+
 
 * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 * Hospitalizations
@@ -129,10 +144,10 @@ import excel "${input}/raw_data_ab.xlsx", sheet("hospitalizations") firstrow
 twoway bar new_hospital date if new_hospital != ., ///
 ytitle("New Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(8 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(9 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(10 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(11 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(8 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(9 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(10 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(11 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_hospital_ab.gph", replace)
 graph export "${output}/alberta/new_hospitalizations_ab.pdf", as(pdf) replace
 
@@ -140,10 +155,10 @@ graph export "${output}/alberta/new_hospitalizations_ab.pdf", as(pdf) replace
 twoway connected current_hospital date if new_hospital != ., ///
 ytitle("Hospital Beds Occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(5 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(10 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(15 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(20 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_hospital_ab.gph", replace)
 graph export "${output}/alberta/current_hospitalizations_ab.pdf", as(pdf) replace
 
@@ -151,10 +166,10 @@ graph export "${output}/alberta/current_hospitalizations_ab.pdf", as(pdf) replac
 twoway connected cumu_hospital date if new_hospital != ., ///
 ytitle("Cumulative Hospitalizations") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(5 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(10 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(15 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(20 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(5 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(10 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(15 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(20 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_hospital_ab.gph", replace)
 graph export "${output}/alberta/cumulative_hospitalizations_ab.pdf", as(pdf) replace
 
@@ -200,10 +215,10 @@ import excel "${input}/raw_data_ab.xlsx", sheet("icu") firstrow
 twoway bar new_icu date if new_icu != ., ///
 ytitle("New ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(3 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(4 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(5 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(2 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(3 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(4 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(5 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/new_icu_ab.gph", replace)
 graph export "${output}/alberta/new_icu_ab.pdf", as(pdf) replace
 
@@ -211,10 +226,10 @@ graph export "${output}/alberta/new_icu_ab.pdf", as(pdf) replace
 twoway connected current_icu date if new_icu != ., ///
 ytitle("ICU beds occupied") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(2 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(4 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(6 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(8 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/current_icu_ab.gph", replace)
 graph export "${output}/alberta/current_icu_ab.pdf", as(pdf) replace
 
@@ -222,10 +237,10 @@ graph export "${output}/alberta/current_icu_ab.pdf", as(pdf) replace
 twoway connected cumu_icu date if new_icu != ., ///
 ytitle("Cumulative ICU Admissions") xtitle("Date") ///
 xlabel(${xstart}(7)${xend}, angle(45)) ///
-xline($mass2502w) text(2 $mass2502w "< 250 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($schools2w) text(4 $schools2w "Schools closed + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-xline($mass502w) text(6 $mass502w "< 50 + 2 weeks", place(w) orientation(horizontal) size(small)) ///
-//xline($enforce2w) text(8 $enforce2w "Enforcement + 2 weeks", place(w) orientation(horizontal) size(small)) ///
+xline($mass2502w) text(2 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(4 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(6 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(8 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
 //saving("${output}/cumu_icu_ab.gph", replace)
 graph export "${output}/alberta/cumulative_icu_ab.pdf", as(pdf) replace
 
