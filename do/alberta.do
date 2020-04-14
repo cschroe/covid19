@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "9apr2020"
+global today = "13apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
@@ -275,6 +275,54 @@ note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
 graph export "${output}/alberta/current_icu_exp_ab.pdf", as(pdf) replace
 
 
+
+* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+* Deaths
+* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+* Load data
+clear
+import excel "${input}/raw_data_ab.xlsx", sheet("deaths") firstrow
+
+* Cumulative deaths
+twoway connected cumu_deaths date if new_deaths != ., ///
+ytitle("Cumulative Deaths") xtitle("Date") ///
+xlabel(${xstart}(7)${xend}, angle(45)) ///
+xline($mass2502w) text(2 $mass2502w "< 250", place(w) orientation(horizontal) size(small)) ///
+xline($schools2w) text(4 $schools2w "Schools closed", place(w) orientation(horizontal) size(small)) ///
+xline($mass502w) text(6 $mass502w "< 50", place(w) orientation(horizontal) size(small)) ///
+xline($enforce2w) text(8 $enforce2w "Enforcement", place(w) orientation(horizontal) size(small)) ///
+//saving("${output}/cumu_deaths_ab.gph", replace)
+graph export "${output}/alberta/cumulative_deaths_ab.pdf", as(pdf) replace
+
+* ------------------------------------------------------------------------------
+* Estimate exponential growth rate
+* ------------------------------------------------------------------------------
+* Generate logs
+foreach var in cumu_deaths {
+	cap drop log_`var'
+	gen log_`var' = ln(`var')
+}
+
+* Regress
+reg log_cumu_deaths day_1 if new_deaths != .
+
+* Inital value
+local init_value = exp(_b[_cons])
+
+* Growth factor
+local ex_growth = exp(_b[day_1])
+
+* Exponential growth
+cap drop ex_growth
+gen ex_growth = (`init_value')*((`ex_growth')^(day_1))
+
+* Plot
+twoway (connected cumu_deaths date if new_deaths != .) ///
+(connected ex_growth date if new_deaths != ., lcolor(blue)), ///
+ytitle("Cumulative deaths") xtitle("Date") ///
+legend(label(1 "Data") label(2 "Exponential growth") pos(6) row(1)) ///
+note("Exponential growth factor: `ex_growth', Initial value: `init_value'")
+graph export "${output}/alberta/cumulative_deaths_exp_ab.pdf", as(pdf) replace
 
 
 
