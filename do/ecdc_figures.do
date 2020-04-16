@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "13apr2020"
+global today = "16apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
@@ -28,7 +28,7 @@ use "${temp}/ecdc_temp.dta", clear
 * ------------------------------------------------------------------------------
 * Canada vs. ____
 * ------------------------------------------------------------------------------
-global country = "CHN"
+global country = "USA"
 
 * Cumulative cases
 twoway (connected cumu_cases_100k day_100 if country_code == "CAN", lcolor(red)) ///
@@ -45,7 +45,25 @@ legend(label(1 "CAN") label(2 "$country") pos(6) row(1))
 graph export "${output}/ecdc/ecdc_deaths_CAN_${country}.pdf", as(pdf) replace
 
 
+* ------------------------------------------------------------------------------
+* Country 1 vs. Country 2
+* ------------------------------------------------------------------------------
+global country1 = "SWE"
+global country2 = "USA"
 
+* Cumulative cases
+twoway (connected cumu_cases_100k day_100 if country_code == "$country1", lcolor(red)) ///
+(connected cumu_cases_100k day_100 if country_code == "$country2", lcolor(blue)), ///
+ytitle("Cumulative cases per 100,000") xtitle("Days since 100th case") ///
+legend(label(1 "$country1") label(2 "$country2") pos(6) row(1))
+graph export "${output}/ecdc/ecdc_cases_${country1}_${country2}.pdf", as(pdf) replace
+
+* Cumulative deaths
+twoway (connected cumu_deaths_100k day_100 if country_code == "$country1", lcolor(red)) ///
+(connected cumu_deaths_100k day_100 if country_code == "$country2", lcolor(blue)), ///
+ytitle("Cumulative deaths per 100,000") xtitle("Days since 100th case") ///
+legend(label(1 "$country1") label(2 "$country2") pos(6) row(1))
+graph export "${output}/ecdc/ecdc_deaths_${country1}_${country2}.pdf", as(pdf) replace
 
 
 
