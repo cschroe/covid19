@@ -28,7 +28,7 @@ use "${temp}/ecdc_temp.dta", clear
 * ------------------------------------------------------------------------------
 * Canada vs. ____
 * ------------------------------------------------------------------------------
-global country = "USA"
+global country = "AUT"
 
 * Cumulative cases
 twoway (connected cumu_cases_100k day_100 if country_code == "CAN", lcolor(red)) ///
@@ -49,7 +49,7 @@ graph export "${output}/ecdc/ecdc_deaths_CAN_${country}.pdf", as(pdf) replace
 * Country 1 vs. Country 2
 * ------------------------------------------------------------------------------
 global country1 = "SWE"
-global country2 = "USA"
+global country2 = "ESP"
 
 * Cumulative cases
 twoway (connected cumu_cases_100k day_100 if country_code == "$country1", lcolor(red)) ///

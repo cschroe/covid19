@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "15apr2020"
+global today = "20apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
@@ -32,7 +32,7 @@ global mass50 = td("17mar2020") // Limit on mass gatherings of 50 people, March 
 global enforce = td("25mar2020") // Enforcement of mandatory public health orders, March 25
 global mass15 = td("27mar2020") // Limit on mass gatherings of 15 people, March 27
 
-foreach date in mass250 schools mass50 enforce {
+foreach date in mass250 schools mass50 enforce mass15 {
 	global `date'2w = $`date' + 21
 }
 
