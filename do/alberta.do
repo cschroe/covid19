@@ -9,7 +9,7 @@ set matsize 10000
 *set linesize 200
 
 global startdate = "1mar2020"
-global today = "23apr2020"
+global today = "28apr2020"
 
 global xstart = td($startdate)
 global xend = td($today)
